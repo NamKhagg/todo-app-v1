@@ -1,0 +1,16 @@
+* {
+    font-family: Arial, Helvetica, sans-serif;
+    outline: 1px solid red;
+    
+}
+
+body {
+    min-height: 100vh;
+    background: linear-gradient(135deg, #8ec5fc, #e0c3fc);
+    display: flex;
+    justify-content: center;
+   
+}
+
+.app {
+}
