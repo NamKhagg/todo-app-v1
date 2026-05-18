@@ -1,7 +1,5 @@
 * {
-    font-family: Arial, Helvetica, sans-serif;
-    outline: 1px solid red;
-    
+    font-family: Arial, Helvetica, sans-serif;    
 }
 
 body {
@@ -9,11 +7,52 @@ body {
     background: linear-gradient(135deg, #9efca3, #e0c3fc);
     display: flex;
     justify-content: center;
+    align-items: center;
+
 }
 
 .todo-card {
- 
+    border-radius: 15px;
+    background-color: rgb(149, 114, 192);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+    height: 500px;
+    width: 400px;
+    padding : 0px;
+}
 
+.todo-header {
+    text-align: center;
+    padding: 10px 0px;
+    margin: 0px;
+    background-color: rgb(240, 255, 127);
+    border-radius: 15px;
+}
+
+.todo-input {
+    display: flex;
+    justify-content: space-between;
+    gap : 8px;
+    margin: 12px;
+}
+
+.todo-title {
+    margin: 0px;
+}
+
+.todo-field {
+    flex: 1;
+    padding: 12px 12px;
+    border : none;
+    border-radius: 10px;
+    cursor: pointer;
+}
+
+.add-btn {
+    border: none;
+    background-color: burlywood;
+    border-radius: 12px;
+    padding: 0px 12px;
+    cursor: pointer;
 }
 
 .todo-list {
@@ -23,12 +62,38 @@ body {
 .todo-item {
     list-style: none;
     display: flex;
-    justify-content: space-between;
+    gap: 10px;
+    padding : 10px 10px;
+    margin: 0px 12px;
+    background: rgba(255, 255, 255, 0.7);
+    border-radius: 12px;
+    cursor: pointer;
+}
+
+.todo-item:hover .del-btn {
+    opacity: 1;
+    color: red;
+}
+
+.todo-list {
+    padding : 0px;
+}
+
+.item-content {
+    flex: 1;
 }
 
 .checkbox {
-    background-color: #9efca3;
+    background-color: white;
     height: 20px;
     width: 20px;
     border-radius: 8px;
+}
+
+.del-btn {
+    background-color: transparent;
+    border: none;
+    cursor: pointer;
+    opacity: 0;
+    transition: 0.2s;
 }
