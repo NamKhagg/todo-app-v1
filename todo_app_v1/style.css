@@ -54,9 +54,13 @@ body {
 .todo-field {
     flex: 1;
     padding: 12px 12px;
-    border : none;
+    border : transparent;
     border-radius: 10px;
     cursor: pointer;
+}
+
+.todo-field:focus {
+    outline : 2px solid red;
 }
 
 .add-btn {
@@ -65,6 +69,10 @@ body {
     border-radius: 12px;
     padding: 0px 12px;
     cursor: pointer;
+}
+
+.add-btn:focus {
+    outline : 2px solid red;
 }
 
 .todo-list {
@@ -76,7 +84,7 @@ body {
     display: flex;
     gap: 10px;
     padding : 10px 10px;
-    margin: 0px 12px;
+    margin: 10px 12px;
     background: rgba(255, 255, 255, 0.7);
     border-radius: 12px;
     cursor: pointer;
@@ -102,6 +110,10 @@ body {
     border-radius: 8px;
 }
 
+.checkbox.completed {
+    background-color: #9efca3;
+}
+
 .del-btn {
     background-color: transparent;
     border: none;
@@ -109,3 +121,5 @@ body {
     opacity: 0;
     transition: 0.2s;
 }
+
+
