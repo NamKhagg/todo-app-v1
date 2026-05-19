@@ -18,6 +18,7 @@ body {
     height: 500px;
     width: 400px;
     padding : 0px;
+    overflow: hidden;
 }
 
 .todo-header {
@@ -25,7 +26,18 @@ body {
     padding: 10px 0px;
     margin: 0px;
     background-color: rgb(240, 255, 127);
-    border-radius: 15px;
+}
+
+.todo-filter {
+    display: flex;
+    justify-content: center;
+    gap : 40px;
+    padding: 5px 0px;
+}
+
+.todo-filter span {
+    cursor : pointer;
+    color : white;
 }
 
 .todo-input {
