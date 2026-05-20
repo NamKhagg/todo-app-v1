@@ -25,6 +25,22 @@ addButton.addEventListener("click", () => {
 
     saveData();
     render();
+
+    input.value = "";
+})
+
+allFilterButton.addEventListener("click", () => {
+    filterStatus = "all";
+    updateData(allFilterButton);
+
+    render();
+})
+
+inProgressButton.addEventListener("click", () => {
+    filterStatus = "inProgress";
+    updateData(inProgressButton);
+
+    render();
 })
 
 doneFilter.addEventListener("click", () => {
@@ -58,13 +74,21 @@ function render() {
         })
     }
 
+    if (filterStatus === "inProgress") {
+        filterTodos = filterTodos.filter((item) => {
+            return item.isCompleted === false;
+        })
+    }
+
     filterTodos.forEach((todo) => {
         const li = document.createElement("li");
 
         li.innerHTML = `
                     <div class="todo-item">
-                        <span class="checkbox ${todo.isCompleted ? "completed" : ""}"></span>
-                        <span class="item-content">${todo.task}</span>
+                        <span class="checkbox ${todo.isCompleted ? "completed" : ""}">
+                            <span class="check-icon">✓</span>
+                        </span>
+                        <span class="item-content ${todo.isCompleted ? "completed" : ""}" >${todo.task}</span>
                         <button class="del-btn">X</button>
                     </div>
         `
@@ -93,7 +117,6 @@ function render() {
                         isCompleted : !item.isCompleted
                     }
                 }
-
                 return item;
             })
 

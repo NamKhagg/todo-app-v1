@@ -12,6 +12,11 @@ body {
 }
 
 .todo-card {
+    position: relative;
+
+    display : flex;
+    flex-direction: column;
+
     border-radius: 15px;
     background-color: rgb(149, 114, 192);
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
@@ -38,6 +43,14 @@ body {
 .todo-filter span {
     cursor : pointer;
     color : white;
+    padding: 7px 12px;
+}
+
+.todo-filter span.active {
+    background-color: rgb(247, 176, 210);
+    border-radius: 8px;
+    color: blue;
+    font-weight: 600;
 }
 
 .todo-input {
@@ -68,7 +81,10 @@ body {
     background-color: burlywood;
     border-radius: 12px;
     padding: 0px 12px;
+    margin-left: 2px;
     cursor: pointer;
+    font-weight: 600;
+
 }
 
 .add-btn:focus {
@@ -77,6 +93,8 @@ body {
 
 .todo-list {
     list-style: none;
+
+    flex : 1;
 }
 
 .todo-item {
@@ -97,21 +115,57 @@ body {
 
 .todo-list {
     padding : 0px;
+    max-height : 290px;
+    overflow : auto;
+
 }
 
 .item-content {
     flex: 1;
+
+    overflow : hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
 }
 
 .checkbox {
-    background-color: white;
+    position : relative;
+
+    background: white;
     height: 20px;
     width: 20px;
     border-radius: 8px;
+
+    flex-shrink: 0;
+}
+
+.check-icon {
+    position: absolute;
+
+    color : white;
+
+    top: 50%;
+    left: 50%;
+
+    transform : translate(-50%, -50%);
+
+
+    opacity : 0;
+
 }
 
 .checkbox.completed {
-    background-color: #9efca3;
+    background-color: #075004;
+
+}
+
+.checkbox.completed .check-icon {
+
+    opacity : 1;
+}
+
+.item-content.completed {
+    text-decoration: line-through;
 }
 
 .del-btn {
@@ -120,6 +174,12 @@ body {
     cursor: pointer;
     opacity: 0;
     transition: 0.2s;
+}
+
+.todo-footer {
+    border-top: 1px solid black;
+
+    padding-bottom: 40px;
 }
 
 
