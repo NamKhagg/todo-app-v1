@@ -7,6 +7,13 @@ const allFilterButton = document.querySelector(".all");
 const inProgressButton = document.querySelector(".in-progress");
 const doneFilter = document.querySelector(".done");
 
+const footer = document.querySelector(".todo-footer");
+const taskCount = document.querySelector(".task-count");
+const taskRemainsContent = document.querySelector(".task-remains-content");
+
+const deleteAllTaskDone = document.querySelector(".delete-all-done");
+const toastMessege = document.querySelector(".toast-mess");
+
 let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
 let filterStatus = "all";
@@ -25,8 +32,16 @@ addButton.addEventListener("click", () => {
 
     saveData();
     render();
+    footerRender();
+    showToast();
 
     input.value = "";
+})
+
+input.addEventListener("keydown", (e) => {
+    if (e.key == "Enter") {
+        addButton.click();
+    }
 })
 
 allFilterButton.addEventListener("click", () => {
@@ -34,6 +49,7 @@ allFilterButton.addEventListener("click", () => {
     updateData(allFilterButton);
 
     render();
+    footerRender();
 })
 
 inProgressButton.addEventListener("click", () => {
@@ -50,6 +66,16 @@ doneFilter.addEventListener("click", () => {
     render();
 })
 
+deleteAllTaskDone.addEventListener("click", () => {
+    todos = todos.filter((item) => {
+        return item.isCompleted === false;
+    })
+
+    saveData();
+    render();
+    footerRender();
+})
+
 
 function saveData() {
     localStorage.setItem("todos", JSON.stringify(todos));
@@ -61,6 +87,29 @@ function updateData(element) {
     })
 
     element.classList.add("active");
+}
+
+function footerRender() {
+    let temp = todos;
+
+    temp = temp.filter((item) => {
+        return item.isCompleted === false;
+    })
+
+    taskCount.textContent = temp.length;
+
+    if (temp.length >= 2) 
+        taskRemainsContent.textContent = "Tasks remains";
+    else 
+        taskRemainsContent.textContent = "Task remains";
+        
+}
+
+function showToast() {
+    toastMessege.classList.add("active");
+    setTimeout(() => {
+        toastMessege.classList.remove("active");
+    }, 2000);
 }
 
 function render() {
@@ -104,6 +153,7 @@ function render() {
 
             saveData();
             render();
+            footerRender();
         })
 
         const checkbox = li.querySelector(".checkbox");
@@ -122,9 +172,12 @@ function render() {
 
             saveData();
             render();
+            footerRender();
         })
 
     }) 
+
 }
 
 render();
+footerRender();
