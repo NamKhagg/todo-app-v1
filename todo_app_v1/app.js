@@ -7,6 +7,8 @@ const allFilterButton = document.querySelector(".all");
 const inProgressButton = document.querySelector(".in-progress");
 const doneFilter = document.querySelector(".done");
 
+const markAllAsDoneButton = document.querySelector(".mark-all-as-done-button")
+
 const footer = document.querySelector(".todo-footer");
 const taskCount = document.querySelector(".task-count");
 const taskRemainsContent = document.querySelector(".task-remains-content");
@@ -18,7 +20,10 @@ let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
 let filterStatus = "all";
 
-addButton.addEventListener("click", () => {
+allFilterButton.classList.add("active");
+
+
+function addTask() {
     const data = input.value.trim();
     
     if (data === "") 
@@ -36,11 +41,14 @@ addButton.addEventListener("click", () => {
     showToast();
 
     input.value = "";
-})
+}
+
+addButton.addEventListener("click", addTask)
 
 input.addEventListener("keydown", (e) => {
     if (e.key == "Enter") {
-        addButton.click();
+        e.preventDefault();
+        addTask();
     }
 })
 
@@ -64,6 +72,39 @@ doneFilter.addEventListener("click", () => {
     updateData(doneFilter);
 
     render();
+})
+
+let flat = true;
+
+markAllAsDoneButton.addEventListener("click", () => {
+    let count = 0;
+    todos.forEach((item) => {
+        if (item.isCompleted === false) {
+            count++;
+        } 
+    })
+
+    if (flat === true || count !== 0) {
+        todos = todos.map((item) => {
+            return {
+                ...item,
+                isCompleted : true
+            }
+        })
+        flat = false;
+    } else {
+        todos = todos.map((item) => {
+            return {
+                ...item,
+                isCompleted : false
+            }
+        })
+        flat = true;
+    }
+
+    saveData();
+    render();
+    footerRender();
 })
 
 deleteAllTaskDone.addEventListener("click", () => {
