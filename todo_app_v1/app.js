@@ -7,6 +7,9 @@ const allFilterButton = document.querySelector(".all");
 const inProgressButton = document.querySelector(".in-progress");
 const doneFilter = document.querySelector(".done");
 
+const searchTask = document.querySelector(".search-field");
+const searchIcon = document.querySelector(".search-icon");
+
 const markAllAsDoneButton = document.querySelector(".mark-all-as-done-button")
 
 const footer = document.querySelector(".todo-footer");
@@ -20,6 +23,7 @@ let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
 let filterStatus = "all";
 let flat;
+let searchValue = "";
 
 allFilterButton.classList.add("active");
 
@@ -61,6 +65,18 @@ allFilterButton.addEventListener("click", () => {
     footerRender();
 })
 
+searchTask.addEventListener("input", () => {
+    searchValue = searchTask.value.toLowerCase().trim();
+
+    render();
+})
+
+searchIcon.addEventListener("click", () => {
+    searchValue = searchTask.value.toLowerCase().trim();
+
+    render();
+})
+
 inProgressButton.addEventListener("click", () => {
     filterStatus = "inProgress";
     updateData(inProgressButton);
@@ -74,6 +90,7 @@ doneFilter.addEventListener("click", () => {
 
     render();
 })
+
 
 markAllAsDoneButton.addEventListener("click", () => {
     console.log(flat);
@@ -169,6 +186,13 @@ function render() {
             return item.isCompleted === false;
         })
     }
+
+    if (searchValue !== "") {
+        filterTodos = filterTodos.filter((item) => {
+            return item.task.includes(searchValue);
+        })
+    }
+
 
     filterTodos.forEach((todo) => {
         const li = document.createElement("li");
