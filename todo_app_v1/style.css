@@ -20,8 +20,8 @@ body {
     border-radius: 15px;
     background-color: rgb(149, 114, 192);
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-    height: 600px;
-    width: 500px;
+    height: 700px;
+    width: 600px;
     padding : 0px;
     overflow: hidden;
 }
@@ -53,8 +53,8 @@ body {
     align-items: center;
     gap: 5px;
     background: white;
+    width: 180px;
     
-
     border: transparent;
     border-radius: 10px;
 
@@ -78,6 +78,14 @@ body {
     cursor : pointer;
     color : white;
     padding: 12px;
+
+    border-radius: 10px;
+
+    transition: 0.2s;
+}
+
+.todo-filter span:hover {
+    transform: scale(1.05);
 }
 
 .todo-filter span.active {
@@ -85,6 +93,9 @@ body {
     border-radius: 8px;
     color: blue;
     font-weight: 600;
+    transform: scale(0.95);
+
+    box-shadow: 0 8px 18px rgba(109,76,255,0.35);
 }
 
 .todo-input {
@@ -130,12 +141,6 @@ body {
     
 }
 
-.todo-list {
-    list-style: none;
-
-    flex : 1;
-}
-
 .todo-item {
     list-style: none;
     display: flex;
@@ -153,11 +158,13 @@ body {
 }
 
 .todo-list {
+    list-style: none;
+
     padding : 0px;
-    max-height : 290px;
     overflow : auto;
     margin-bottom : 20px;
 
+    flex : 1;
 }
 
 .item-content {
@@ -214,14 +221,14 @@ body {
 }
 
 .mark-all-as-done button {
-    padding: 10px;
-    margin-top: 20px;
-    margin-right: 20px;
-    
+    padding: 12px;
+
     border: 1px solid yellow;
     background-color: transparent;
     color: yellow;
     font-weight: 700;
+
+    border-radius: 10px;
 
     cursor: pointer;
 }

@@ -27,7 +27,6 @@ let searchValue = "";
 
 allFilterButton.classList.add("active");
 
-
 function addTask() {
     const data = input.value.trim();
     
@@ -93,7 +92,6 @@ doneFilter.addEventListener("click", () => {
 
 
 markAllAsDoneButton.addEventListener("click", () => {
-    console.log(flat);
     let count = 0;
     todos.forEach((item) => {
         if (item.isCompleted === false) {
@@ -101,7 +99,15 @@ markAllAsDoneButton.addEventListener("click", () => {
         } 
     })
 
-    if (flat === true || count !== 0) {
+    if (count === 0) {
+        flat = false;
+    } else  {
+        flat = true;
+    }
+
+    console.log(flat);
+
+    if (flat === true) {
         todos = todos.map((item) => {
             return {
                 ...item,
@@ -109,7 +115,7 @@ markAllAsDoneButton.addEventListener("click", () => {
             }
         })
         flat = false;
-    } else if (flat === false || count === 0){
+    } else if (flat === false){
         todos = todos.map((item) => {
             return {
                 ...item,
@@ -122,6 +128,8 @@ markAllAsDoneButton.addEventListener("click", () => {
     saveData();
     render();
     footerRender();
+
+    console.log("now", flat);
 })
 
 deleteAllTaskDone.addEventListener("click", () => {
