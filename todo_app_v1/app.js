@@ -19,6 +19,7 @@ const toastMessege = document.querySelector(".toast-mess");
 let todos = JSON.parse(localStorage.getItem("todos")) || [];
 
 let filterStatus = "all";
+let flat;
 
 allFilterButton.classList.add("active");
 
@@ -74,9 +75,8 @@ doneFilter.addEventListener("click", () => {
     render();
 })
 
-let flat = true;
-
 markAllAsDoneButton.addEventListener("click", () => {
+    console.log(flat);
     let count = 0;
     todos.forEach((item) => {
         if (item.isCompleted === false) {
@@ -92,7 +92,7 @@ markAllAsDoneButton.addEventListener("click", () => {
             }
         })
         flat = false;
-    } else {
+    } else if (flat === false || count === 0){
         todos = todos.map((item) => {
             return {
                 ...item,

@@ -1,5 +1,6 @@
 * {
     font-family: Arial, Helvetica, sans-serif;    
+    outline: 1px solid red;
 }
 
 body {
@@ -33,17 +34,21 @@ body {
     background-color: rgb(240, 255, 127);
 }
 
-.todo-filter {
+.filter-search {
     display: flex;
     justify-content: center;
-    gap : 40px;
-    padding: 5px 0px;
+    margin: 0px;
+    justify-content: space-around;
+}
+
+.todo-filter {
+    display: flex;
+    justify-content: start;
 }
 
 .todo-filter span {
     cursor : pointer;
     color : white;
-    padding: 7px 12px;
 }
 
 .todo-filter span.active {
@@ -87,8 +92,13 @@ body {
 
 }
 
+.add-btn:hover {
+    transform: scale(1.05);
+}
+
 .add-btn:focus {
     outline : 2px solid red;
+    
 }
 
 .todo-list {
@@ -185,6 +195,10 @@ body {
     font-weight: 700;
 
     cursor: pointer;
+}
+
+.mark-all-as-done button:hover {
+    transform: scale(1.05);
 }
 
 .del-btn {
