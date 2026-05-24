@@ -51,7 +51,6 @@ body {
 .todo-search {
     display: flex;
     align-items: center;
-    gap: 5px;
     background: white;
     width: 180px;
     
@@ -72,6 +71,7 @@ body {
 
 .search-icon {
     flex-shrink: 0;
+    padding-right: 2px;
 }
 
 .todo-filter span {
@@ -307,5 +307,80 @@ body {
     transform: translateX(0px);
 }
 
+.card-info {
+    display: flex;
+    background-color: #c09efc;
+    padding: 15px;
+    margin : 5px;
 
+    border-radius: 10px;
+}
+
+.stat-card {
+    display: flex;
+    align-items: center;
+    gap : 10px;
+
+    border-right: 1px solid;
+
+    flex : 1;
+}
+
+.stat-icon-bg {
+    position: relative;
+
+    background: white;
+    height: 30px;
+    width: 30px;
+    border-radius: 8px;
+
+    margin : 5px;
+    
+}
+
+.stat-icon {
+    position : absolute;
+
+    top: 50%;
+    left: 50%;
+
+    transform: translate(-50%, -50%);
+
+}
+
+.stat-info {
+    display: flex;
+    flex-direction: column;
+
+    gap: 5px;
+    padding: 5px;
+}
+
+
+.progress-stat {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+
+    border-right : none;
+}
+
+.progress-bar {
+    flex: 1;
+    height: 8px;
+
+    background: rgba(255,255,255,0.7);
+    border-radius: 999px;
+    overflow: hidden;
+}
+
+.progress-fill {
+    height: 100%;
+    width: 66%;
+
+    background: #2ee66b;
+    border-radius: 999px;
+
+    transition: width 0.3s ease;
+}
 

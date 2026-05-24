@@ -8,16 +8,21 @@
 </head>
 <body>
     <div class="todo-card">
+        <!--Header -->
         <div class="todo-header">
             <h1 class="todo-title">Todo List</h1>
             <p>Let's have a hard-working day</p>
         </div>
+
+        <!-- Input Area-->
         <div class="todo-content">
             <div class="todo-input">
                 <input class="todo-field" type="text" placeholder="Fill your task">
                 <button class="add-btn">Add</button>                
             </div>
         </div>
+
+        <!-- Search Area -->
         <div class="filter-search">
             <div class="todo-filter">
                 <span class="all">All</span>
@@ -36,7 +41,50 @@
 
         </div>
 
+        <div class="card-info">
+            <div class="stat-card total-task">
+                <span class="stat-icon-bg total-task-icon-background">
+                    <svg class="stat-icon total-task-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-icon lucide-calendar"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+                </span>
+                <div class="stat-info total-task-info">
+                    <span>Total Tasks</span>
+                    <span>12</span>
+                </div>
+            </div>
 
+            <div class="stat-card inprogress-task">
+                <span class="stat-icon-bg inprogress-icon-background">
+                    <svg class="stat-icon inprogress-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-icon lucide-calendar"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+                </span>
+                <div class="stat-info inprogress-info">
+                    <span>In-progress</span>
+                    <span>12</span>
+                </div>
+            </div>
+
+            <div class="stat-card done-task">
+                <span class="stat-icon-bg done-icon-background">
+                    <svg class="stat-icon done-icon" xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="lucide lucide-calendar-icon lucide-calendar"><path d="M8 2v4"/><path d="M16 2v4"/><rect width="18" height="18" x="3" y="4" rx="2"/><path d="M3 10h18"/></svg>
+                </span>
+                <div class="stat-info done-info">
+                    <span>Done</span>
+                    <span>12</span>
+                </div>
+            </div>
+
+            <div class="progress-stat stat-card">
+                <div class="stat-info">
+                    <span>Progress</span>
+                     <strong class="progress-percent">66%</strong>
+                </div>
+
+                <div class="progress-bar">
+                    <div class="progress-fill"></div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Todo tasks list-->
         <ul class="todo-list">
         </ul>
 
@@ -49,6 +97,8 @@
         </div>
     </div>
 
+
+    <!-- Toast Message-->
     <div class="toast-mess">
         <span>Congrat ! Create task successfully</span>
     </div>
