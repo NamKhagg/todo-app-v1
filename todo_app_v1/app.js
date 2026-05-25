@@ -1,3 +1,5 @@
+console.log("JS LOADED");
+
 const input = document.querySelector(".todo-field");
 const addButton = document.querySelector(".add-btn");
 const list = document.querySelector(".todo-list");
@@ -11,6 +13,12 @@ const searchTask = document.querySelector(".search-field");
 const searchIcon = document.querySelector(".search-icon");
 
 const markAllAsDoneButton = document.querySelector(".mark-all-as-done-button")
+
+const totalTask = document.querySelector(".total-number");
+const inProgressTask = document.querySelector(".inProgress-number");
+const doneTask = document.querySelector(".done-number");
+const progressPercent = document.querySelector(".progress-percent");
+const progressFill = document.querySelector(".progress-fill");
 
 const footer = document.querySelector(".todo-footer");
 const taskCount = document.querySelector(".task-count");
@@ -27,7 +35,31 @@ let searchValue = "";
 
 allFilterButton.classList.add("active");
 
+function renderStat() {
+    const totalTaskNumber = todos.length;
+    totalTask.textContent = `${totalTaskNumber}`;
+
+    const inProgressNumber = todos.filter((item) => {
+        return item.isCompleted === false;
+    })
+    inProgressTask.textContent = `${inProgressNumber.length}`;
+
+    const doneNumber = todos.filter((item) => {
+        return item.isCompleted === true;
+    })
+    doneTask.textContent = `${doneNumber.length}`;
+
+    const progress = totalTask === 0 ? 0 : Math.round((doneNumber.length / totalTaskNumber) * 100);
+
+    progressPercent.textContent = `${progress}%`;
+    progressFill.style.width =  `${progress}%e`;
+
+
+}
+
+
 function addTask() {
+    //console.log("add from:", source);
     const data = input.value.trim();
     
     if (data === "") 
@@ -40,17 +72,18 @@ function addTask() {
     })
 
     saveData();
+    renderStat();
     render();
     footerRender();
     showToast();
 
     input.value = "";
 }
-
+console.log(input);
 addButton.addEventListener("click", addTask)
 
 input.addEventListener("keydown", (e) => {
-    if (e.key == "Enter") {
+    if (e.key == "Enter" && !e.repeat) {
         e.preventDefault();
         addTask();
     }
@@ -60,7 +93,9 @@ allFilterButton.addEventListener("click", () => {
     filterStatus = "all";
     updateData(allFilterButton);
 
+    renderStat();
     render();
+
     footerRender();
 })
 
@@ -126,6 +161,7 @@ markAllAsDoneButton.addEventListener("click", () => {
     }
 
     saveData();
+    renderStat();
     render();
     footerRender();
 
@@ -138,6 +174,7 @@ deleteAllTaskDone.addEventListener("click", () => {
     })
 
     saveData();
+    renderStat();
     render();
     footerRender();
 })
@@ -225,6 +262,7 @@ function render() {
             })
 
             saveData();
+            renderStat()
             render();
             footerRender();
         })
@@ -244,6 +282,7 @@ function render() {
             })
 
             saveData();
+            renderStat()
             render();
             footerRender();
         })
@@ -251,6 +290,7 @@ function render() {
     }) 
 
 }
-
+    
+renderStat();
 render();
 footerRender();

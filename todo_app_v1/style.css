@@ -21,7 +21,7 @@ body {
     background-color: rgb(149, 114, 192);
     box-shadow: 0 10px 30px rgba(0,0,0,0.15);
     height: 700px;
-    width: 600px;
+    width: 650px;
     padding : 0px;
     overflow: hidden;
 }
@@ -309,7 +309,9 @@ body {
 
 .card-info {
     display: flex;
-    background-color: #c09efc;
+    background: rgba(255,255,255,0.15);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255,255,255,0.2);
     padding: 15px;
     margin : 5px;
 
@@ -319,9 +321,11 @@ body {
 .stat-card {
     display: flex;
     align-items: center;
-    gap : 10px;
+    gap : 3px;
 
-    border-right: 1px solid;
+    padding : 12px 10px;
+
+    border-right: 1px solid rgba(255,255,255,0.2);
 
     flex : 1;
 }
@@ -330,8 +334,8 @@ body {
     position: relative;
 
     background: white;
-    height: 30px;
-    width: 30px;
+    height: 40px;
+    width: 40px;
     border-radius: 8px;
 
     margin : 5px;
@@ -356,6 +360,14 @@ body {
     padding: 5px;
 }
 
+.stat-info span:first-child {
+    white-space: nowrap;
+}
+
+.stat-card.done-task {
+    width: 100px;
+}
+
 
 .progress-stat {
     display: flex;
@@ -376,7 +388,7 @@ body {
 
 .progress-fill {
     height: 100%;
-    width: 66%;
+    width: 0%;
 
     background: #2ee66b;
     border-radius: 999px;
